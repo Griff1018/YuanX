@@ -104,9 +104,8 @@ Send `.start` in Discord to view the complete interactive menu.
 
 ### 🛡️ Security & Monitoring
 
-| 
-
 | **Command** | **Description** | 
+|---|---|
 | `.arm` | Arms the security sentinel after a 10-second countdown. | 
 | `.disarm` | Disarms the security sentinel. | 
 | `.peek [seconds]` | Captures an immediate webcam image, screenshot, and audio recording (1-300 seconds). | 
@@ -116,6 +115,7 @@ Send `.start` in Discord to view the complete interactive menu.
 ### 📁 File Management & Remote Access
 
 | **Command** | **Description** | 
+|---|---|
 | `.get <name or path>` | Searches common directories for a file or folder, zips folders, and sends them via Discord (<25MB). | 
 | `.upload` | Saves any file attached to the Discord message into the local `uploads/` folder. | 
 | `.cmd <command>` | Executes a command prompt command remotely and returns the terminal output. | 
@@ -123,6 +123,7 @@ Send `.start` in Discord to view the complete interactive menu.
 ### 🎵 Spotify & Media Control
 
 | **Command** | **Description** | 
+|---|---|
 | `.spotify plink <link>` | Opens and plays a direct Spotify track/playlist link. | 
 | `.spotify search <query>` | Searches Spotify for a track/artist and automatically clicks play. | 
 | `.spotify addlist <name> <link>` | Saves a Spotify playlist or album shortcut under a name. | 
@@ -138,6 +139,7 @@ Send `.start` in Discord to view the complete interactive menu.
 ### 📦 Applications & System Control
 
 | **Command** | **Description** | 
+|---|---|
 | `.open <app/url>` | Launches an app or opens a URL in the default browser. | 
 | `.saveapp <name> <path>` | Saves an application executable path under a custom shortcut name. | 
 | `.showapps` | Lists saved app shortcuts. | 
@@ -145,7 +147,7 @@ Send `.start` in Discord to view the complete interactive menu.
 | `.close <process.exe>` | Forcefully terminates a running process by name. | 
 | `.control screen <on/off>` | Powers off or wakes up connected displays. | 
 | `.screenshot` | Takes a screenshot of the main screen and sends it as an image. | 
-| `.weather` | Displays weather forecast, UV index, rain windows, and AQI metrics. | 
+| `.weather` | Displays weather forecast, UV index, rain windows, and AQI metrics. |
 
 ## 🔒 Security Notice
 
