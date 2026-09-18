@@ -1,0 +1,5 @@
+credentials.py
+spotify_playwright_profile/
+playlists.txt
+app.txt
+__pycache__/
