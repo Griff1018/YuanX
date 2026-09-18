@@ -59,6 +59,38 @@ IS_ARMED = False
 ARM_LOCK = False
 SENTINEL_LISTENERS_STARTED = False
 
+
+
+SETTINGS_FILE = "settings.json"
+
+def load_settings():
+    if not os.path.exists(SETTINGS_FILE):
+        return {"bot_name": "Yuanx"}
+    try:
+        with open(SETTINGS_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {"bot_name": "Yuanx"}
+
+def save_settings(settings):
+    with open(SETTINGS_FILE, "w", encoding="utf-8") as f:
+        json.dump(settings, f, indent=4)
+
+# Initialize settings
+SETTINGS = load_settings()
+
+def get_bot_name():
+    return SETTINGS.get("bot_name", "Yuanx")
+
+def action_set_bot_name(new_name):
+    new_name = new_name.strip()
+    if not new_name:
+        return "❌ Bot name cannot be empty."
+    
+    SETTINGS["bot_name"] = new_name
+    save_settings(SETTINGS)
+    return f"✅ Bot name has been set to **{new_name}**."
+
 # =========================
 # Storage
 # =========================
@@ -964,8 +996,9 @@ async def on_message(message):
     # =========================
 
     if text == f"{PREFIX}start":
+        bot_name = get_bot_name()
         await message.channel.send(
-            "Yuanx is ready.\n\n"
+            f"**{bot_name}** is ready.\n\n"
             "🎵 **Spotify**\n"
             f"`{PREFIX}spotify plink <link>` — Play a Spotify track/playlist link\n"
             f"`{PREFIX}spotify plist <name>` — Play a saved playlist\n"
@@ -973,9 +1006,6 @@ async def on_message(message):
             f"`{PREFIX}spotify addlist <name> <playlist/album link>` — Save a playlist/album\n"
             f"`{PREFIX}spotify rmlist <name>` — Remove a saved playlist\n"
             f"`{PREFIX}spotify search <text>` — Search Spotify\n\n"
-
-            "🌤️ **Weather**\n"
-            f"`{PREFIX}weather` — Show current weather information\n\n"
 
             "📦 **Applications**\n"
             f"`{PREFIX}open <app/url>` — Open an application or URL\n"
@@ -1032,6 +1062,26 @@ async def on_message(message):
             )
 
         return
+
+    # Set Bot Name
+    if text.startswith(f"{PREFIX}setname"):
+        arg = text[len(f"{PREFIX}setname"):].strip()
+        if not arg:
+            await message.channel.send(f"Current bot name: **{get_bot_name()}**\nUsage: `{PREFIX}setname <new_name>`")
+            return
+        
+        result_msg = action_set_bot_name(arg)
+        
+        # Optional: Attempt to change the bot's Discord nickname on the server
+        if message.guild and message.guild.me:
+            try:
+                await message.guild.me.edit(nick=arg)
+            except discord.Forbidden:
+                result_msg += "\n*(Note: Missing permission to change server nickname)*"
+                
+        await message.channel.send(result_msg)
+        return
+    
     # Spotify
     spotify_prefix = f"{PREFIX}spotify"
 

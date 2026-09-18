@@ -14,8 +14,6 @@
 
 * **📸 Live Inspection (`.peek`):** Remotely request an on-demand webcam snapshot, screenshot, and brief audio clip without locking the computer.
 
-* **🌤️ Local Weather & Air Quality:** Query real-time weather forecasts, rain peak windows, UV index, and AQI/haze metrics (defaulted to Pulau Pinang via Open-Meteo).
-
 * **🖥️ Remote Shell Execution:** Run shell commands directly via Discord and receive stdout/stderr output formatted inline.
 
 * **🎧 Media & Volume Controls:** Adjust master system volume, mute, skip tracks, and control playback remotely.
@@ -147,7 +145,6 @@ Send `.start` in Discord to view the complete interactive menu.
 | `.close <process.exe>` | Forcefully terminates a running process by name. | 
 | `.control screen <on/off>` | Powers off or wakes up connected displays. | 
 | `.screenshot` | Takes a screenshot of the main screen and sends it as an image. | 
-| `.weather` | Displays weather forecast, UV index, rain windows, and AQI metrics. |
 
 ## 🔒 Security Notice
 
