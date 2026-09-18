@@ -138,6 +138,7 @@ Send `.start` in Discord to view the complete interactive menu.
 
 | **Command** | **Description** | 
 |---|---|
+|`.setname <name>`| — Change the bot's custom display name. |
 | `.open <app/url>` | Launches an app or opens a URL in the default browser. | 
 | `.saveapp <name> <path>` | Saves an application executable path under a custom shortcut name. | 
 | `.showapps` | Lists saved app shortcuts. | 

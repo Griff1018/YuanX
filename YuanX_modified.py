@@ -49,11 +49,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
 
-ONLINE_QUOTES = [
-    "🟢 Yuanx online. Ready to roll, boss.",
-    "🟢 Core systems nominal. What's the move?",
-    "🟢 Yuanx loaded and standing by. Keep me busy.",
-]
+
 
 IS_ARMED = False
 ARM_LOCK = False
@@ -90,6 +86,12 @@ def action_set_bot_name(new_name):
     SETTINGS["bot_name"] = new_name
     save_settings(SETTINGS)
     return f"✅ Bot name has been set to **{new_name}**."
+
+ONLINE_QUOTES = [
+    f"🟢 {get_bot_name()} online. Ready to roll, boss.",
+    f"🟢 Core systems nominal. What's the move?",
+    f"🟢 {get_bot_name()} loaded and standing by. Keep me busy.",
+]
 
 # =========================
 # Storage
@@ -1023,6 +1025,7 @@ async def on_message(message):
             f"`{PREFIX}voldown [amount]` — Decrease system volume\n\n"
 
             "🖥️ **System**\n"
+            f"`{PREFIX}setname <name>` — Change the bot's custom display name\n"
             f"`{PREFIX}screenshot` — Capture and send a screenshot\n"
             f"`{PREFIX}lock` — Lock the computer\n"
             f"`{PREFIX}status` — Returns system telemetry (CPU, RAM, Disk C, Battery status)\n"
